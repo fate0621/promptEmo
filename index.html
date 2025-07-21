@@ -1,11 +1,342 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>promptEmo</title>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Hugo 0.66.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/skeleton.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="alternate" href="index.xml" type="application/rss+xml" title="Speech Research">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <title>promptEmo</title>
 </head>
-<body>
-    <h1>hello</h1>
-    <h1>world ~</h1>
+
+<body rightmargin="100" leftmargin="100" topmargin="100" bottommargin="100" line-height:100%="">
+
+  <style>
+    .img-container figcaption {
+      text-align: center;
+    }
+  </style>
+
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 10px;
+      text-align: center;
+      font-size: 70%
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  </style>
+
+<font size="5">
+
+    <p>&nbsp;</p>
+    <p> </p>
+    <div class="container">
+      <header role="banner"></header>
+      <article><br>
+        <h1 align="center"><span style="font-size: 100%;">PromptEmo: Controllable Emotional Speech Synthesis With Natural Language Prompts Through Flow Matching</span></h1>
+        <p style="text-align: center; ">
+                [<a href="https://www.baidu.com/">Data</a>]
+                [<a href="https://github.com/">Code</a>]
+            </p>
+        <br>
+        <section>
+            <br>
+          <h2 id="abstract" align="center">Abstract</h2>
+          <p style="text-align: justify; font-size: 70%;">Emotional transfer text-to-speech (TTS) has made significant progress in recent years.
+            However, most existing systems still rely on expressive reference speech or predefined emotion categories to control the emotional tone of the output.
+            In practical scenarios, users may prefer to convey emotions using natural language prompts, without needing reference speech that matches the target emotion. 
+            Recently, text-driven TTS has gained increasing attention as a promising solution to this challenge. In this paper, we propose PromptEmo, 
+            a controllable emotional TTS framework that generates expressive speech based on natural language prompts. It employs a flow matching-based technique to learn
+             a mapping between text prompts and emotion embeddings. This model is trained in a two-stage process to build a multimodal emotional speech synthesis system.
+              Experimental results show that PromptEmo achieves fine-grained emotional control, high audio quality in the synthesized speech.</p>
+
+
+          <table>
+            <tbody>
+            <tr>
+              <td><img src="img/overview.png" alt="overview",="" width="50%"></td>
+            </tr>
+
+            <tr style="font-size: 70%;">
+              <td>The two-stage training process of PromptEmo. In the first stage, the model is trained on highly expressive emotional speech. In the second stage,
+                we fine-tune the entire model using expressive emotional speech paired with natural language prompts to train the prompt-emotion mapper. 
+                This process enabling fine-grained and controllable emotion transfer in speech synthesis driven by text prompts.</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+    <br>
+    <h2 id="samples" style="text-align: center">Audio Samples</h2>
+    <br>
+    <h4 id="samples"><i>Using Speech Reference</i></h4><p style="font-size: 70%;">
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center">Target Speaker</th>
+          <th style="text-align: center">Emotion</th>
+          <th style="text-align: center">Reference Speech</th>
+          <th style="text-align: center">PromptStyle</th>
+          <th style="text-align: center">eVITS</th>
+          <th style="text-align: center">PromptEmo</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td style="text-align: left" rowspan="4"><audio style="width: 250px;" src="wav/speaker/16.wav" controls="" preload=""></audio></td>
+            <td style="text-align: center">Angry</td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/speaker/ref/14/angry/0014_000352.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptStyle/ref/16/16_14_a1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/eVITS/16/16_14_a1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptEmo/ref/16/16_14_a1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">Happy</td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/speaker/ref/14/happy/0014_000702.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptStyle/ref/16/16_14_h1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/eVITS/16/16_14_h1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptEmo/ref/16/16_14_h1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">Sad</td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/speaker/ref/14/sad/0014_001052.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptStyle/ref/16/16_14_sad1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/eVITS/16/16_14_sa1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptEmo/ref/16/16_14_sa1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">Surprise</td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/speaker/ref/14/surprise/0014_001402.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptStyle/ref/16/16_14_sur1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/eVITS/16/16_14_su1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptEmo/ref/16/16_14_su1.wav" controls="" preload=""></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 id="samples"><i>Using Text Prompt</i></h4>
+    <h4 style="font-size: 80%; text-align: center;">The speaker speaks with normal pitch and normal energy and emotion is angry/happy/sad/surprise.
+</h4>
+    <hr>
+
+    <table>
+      <thead>
+        <tr>
+            <th style="text-align: center">Target Speaker</th>
+          <th style="text-align: center">Emotion</th>
+          <th style="text-align: center">PromptStyle</th>
+          <th style="text-align: center">ParaVITS</th>
+          <th style="text-align: center">PromptEmo</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+            <td style="text-align: left" rowspan="4"><audio style="width: 250px;" src="wav/speaker/16.wav" controls="" preload=""></audio></td>
+          <td style="text-align: center">Angry</td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptStyle/pro/16/16_a.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/paraEVITS/16/16_a.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptEmo/pro/16/16_a.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">Happy</td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptStyle/pro/16/16_h.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/paraEVITS/16/16_h.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptEmo/pro/16/16_h.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">Sad</td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptStyle/pro/16/16_sad.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/paraEVITS/16/16_sad.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptEmo/pro/16/16_sad.wav " controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">Surprise</td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptStyle/pro/16/16_sur.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/paraEVITS/16/16_su.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio style="width: 250px;" src="wav/promptEmo/pro/16/16_sur.wav" controls="" preload=""></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+        <h4 id="samples"><i>Pitch Control</i></h4><p style="font-size: 70%;"></p>
+            <table class="table" style="table-layout: fixed; word-break: break-word;" align="center">
+            
+            <tbody>
+              <tr>
+                <td scope="col" width="50%" colspan="3" style="font-size: 70%;">
+                    <h5>The speaker speaks with low/normal/high pitch and normal energy.</h5></td>
+              </tr>
+              <tr>
+                <td scope="row"><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/pitch/16_lp_ne_q.wav" autoplay="autoplay">
+                  </audio></td>
+                <td><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/pitch/16_np_ne_q.wav" autoplay="autoplay">
+                  </audio></td>
+                <td scope="row"><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/pitch/16_hp_ne_q.wav" autoplay="autoplay">
+                  </audio></td>
+                
+              </tr>
+
+              <tr>
+                <td scope="col" width="50%" colspan="3" style="font-size: 70%;">
+                    <h5>The speaker speaks with low/normal/high pitch and normal energy and emtion is angry.</h5></td>
+              </tr>
+              <tr>
+                <td scope="row"><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/pitch/20_lp_ne_a.wav" autoplay="autoplay">
+                  </audio></td>
+                <td><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/pitch/20_np_ne_a.wav" autoplay="autoplay">
+                  </audio></td>
+                <td scope="row"><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/pitch/20_hp_ne_a.wav" autoplay="autoplay">
+                  </audio></td>
+              </tr>
+
+            </tbody>
+          </table>
+
+           <h4 id="samples"><i>Energy Control</i></h4><p style="font-size: 70%;"></p>
+
+            <table class="table" style="table-layout: fixed; word-break: break-word;" align="center">
+            
+            <tbody>
+              <tr>
+                <td scope="col" width="50%" colspan="3" style="font-size: 70%;">
+                    <h5>The speaker speaks with normal pitch and low/normal/high energy.</h5></td>
+              </tr>
+              <tr>
+                <td scope="row"><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/energy/20_np_le.wav" autoplay="autoplay">
+                  </audio></td>
+                <td><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/energy/20_np_ne.wav" autoplay="autoplay">
+                  </audio></td>
+                <td scope="row"><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/energy/20_np_he.wav" autoplay="autoplay">
+                  </audio></td>
+              </tr>
+
+              <tr>
+                <td scope="col" width="50%" colspan="3" style="font-size: 70%;">
+                    <h5>The speaker speaks with normal pitch and low/normal/high energy and emotion is angry.</h5></td>
+              </tr>
+              <tr>
+                <td scope="row"><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/energy/16_np_le_a.wav" autoplay="autoplay"></audio></td>
+                <td><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/energy/16_np_ne_a.wav" autoplay="autoplay"></audio></td>
+                <td scope="row"><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/energy/16_np_he_a.wav" autoplay="autoplay"></audio></td>
+              </tr>
+            </tbody>
+          </table>
+
+           <h4 id="samples"><i>Speed Control</i></h4><p style="font-size: 70%;"></p>
+
+            <table class="table" style="table-layout: fixed; word-break: break-word;" align="center">
+            
+            <tbody>
+              <tr>
+                <td scope="col" width="50%" colspan="3" style="font-size: 70%;">
+                    <h5>The speaker speaks quickly/slowly with normal pitch and normal energy and emotion is angry.</h5></td>
+              </tr>
+              <tr>
+                <td scope="row"><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/speed/11_np_ne_q_a.wav" autoplay="autoplay">
+                  </audio></td>
+                <td><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/speed/11_np_ne_a.wav" autoplay="autoplay">
+                  </audio></td>
+                <td scope="row"><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/speed/11_np_ne_s_a.wav" autoplay="autoplay">
+                  </audio></td>
+              </tr>
+
+              <tr>
+                <td scope="col" width="50%" colspan="3" style="font-size: 70%;">
+                    <h5>The speaker speaks quickly/slowly with normal pitch and normal energy and emotion is sad.</h5></td>
+              </tr>
+              <tr>
+                <td scope="row">
+                    <audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/speed/16_np_ne_q_sad.wav" autoplay="autoplay">
+                  </audio></td>
+                <td><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/speed/16_np_ne_sad.wav" autoplay="autoplay">
+                  </audio></td>
+                <td scope="row"><audio controls="controls" style="width: 100%;">
+                    <source src="wav/promptEmo/pro/speed/16_np_ne_s_sad.wav" autoplay="autoplay">
+                  </audio></td>
+              </tr>
+            </tbody>
+          </table>
+
+    <h4 id="samples"><i>Ablation Study</i></h4>
+    <h4 style="font-size: 80%; text-align: center;">The speaker speaks with normal pitch and normal energy and emotion is angry/happy/sad/surprise.
+</h4>
+    <hr>
+
+    <table>
+      <thead>
+        <tr>
+            <th style="text-align: center">Target Speaker</th>
+          <th style="text-align: center">Emotion</th>
+          <th style="text-align: center">PromptEmo</th>
+          <th style="text-align: center">w/o CFM</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+            <td style="text-align: left" rowspan="4"><audio style="width: 250px;" src="wav/speaker/16.wav" controls="" preload=""></audio></td>
+          <td style="text-align: center">Angry</td>
+          <td style="text-align: center"><audio style="width: 250px;" src="wav/promptEmo/pro/16/16_a.wav" controls="" preload=""></audio></td>
+          <td style="text-align: center"><audio style="width: 250px;" src="wav/promptEmo_v1/16/16_a.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">Happy</td>
+          <td style="text-align: center"><audio style="width: 250px;" src="wav/promptEmo/pro/16/16_h.wav" controls="" preload=""></audio></td>
+          <td style="text-align: center"><audio style="width: 250px;" src="wav/promptEmo_v1/16/16_h.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">Sad</td>
+          <td style="text-align: center;"><audio style="width: 250px;" src="wav/promptEmo/pro/16/16_sad.wav" controls="" preload=""></audio></td>
+          <td style="text-align: center"><audio style="width: 250px;" src="wav/promptEmo_v1/16/16_sa.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">Surprise</td>
+          <td style="text-align: center"><audio style="width: 250px;" src="wav/promptEmo/pro/16/16_sur.wav" controls="" preload=""></audio></td>
+          <td style="text-align: center"><audio style="width: 250px;" src="wav/promptEmo_v1/16/16_su.wav" controls="" preload=""></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+   
+
+          <div class="container">&nbsp;</div>
+        </section>
+      </article>
+    </div>
+</font>
 </body>
 </html>
