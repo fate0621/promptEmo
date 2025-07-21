@@ -1,1 +1,1 @@
-# promptEmo.github.io
+# demo page of PromptEmo
