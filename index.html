@@ -43,11 +43,12 @@
 
 <font size="5">
 
-    <p>&nbsp;</p>
-    <p> </p>
+    <!-- <p>&nbsp;</p>
+    <p> </p> -->
     <div class="container">
       <header role="banner"></header>
-      <article><br>
+      <article>
+        <br>
         <h1 align="center"><span style="font-size: 100%;">PromptEmo: Controllable Emotional Speech Synthesis With Natural Language Prompts Through Flow Matching</span></h1>
         <p style="text-align: center; ">
                 [<a href="https://github.com/">Data</a>]
@@ -57,7 +58,7 @@
         <section>
             <br>
           <h2 id="abstract" align="center">Abstract</h2>
-          <p style="text-align: justify; font-size: 70%;">Controllable multi-speaker emotional speech synthesis has achieved significant
+          <p style="text-align: justify; font-size: 80%;">Controllable multi-speaker emotional speech synthesis has achieved significant
              progress in recent years, yet precise fine-grained emotional control remains a challenging problem.
               To address this issue, this paper proposes PromptEmo, a flow matching-based framework for controllable
                emotional speech synthesis driven by natural language prompts. It leverages flow matching as a powerful generative mechanism,
@@ -69,10 +70,12 @@
           <table>
             <tbody>
             <tr>
-              <td><img src="img/overview1.png" alt="overview",="" width="50%"></td>
+              <td style="text-align: center;">
+                <img src="img/overview1.png" alt="overview" style="max-width: 100%; height: auto; display: inline-block;" />
+              </td>
             </tr>
 
-            <tr style="font-size: 70%;">
+            <tr style="font-size: 100%;">
               <td>The two-stage training process of PromptEmo. In the first stage, the model is trained on highly expressive emotional speech. In the second stage,
                 we fine-tune the entire model using expressive emotional speech paired with natural language prompts to train the prompt-emotion mapper. 
                 This process enabling fine-grained and controllable emotion transfer in speech synthesis driven by text prompts.</td>
